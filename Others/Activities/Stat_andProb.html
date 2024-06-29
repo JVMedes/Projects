@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Statistics and Probability</title>
+    <link rel="stylesheet" href="Stat_andProb.css">
+</head>
+<body>
+    <center>
+        <p >Notes: 
+            *input a set of numbers with a comma. Ex: 7,5,1,2,4,6,3<br>
+            (input automatically sorted)<br>
+            *refresh the browser for another query <br>
+            *open this to anWriter(Playstore) for Android Devices
+        </p>
+        <hr>
+        <br><br>
+
+        <input type="text" id="ungroupedSetOfData" placeholder="Ungrouped Data">
+        <button id="goBtn" onclick="UngroupedCalAlgo()">Go</button>
+
+        <br><br><br>
+
+        <h1>Ungrouped Data</h1>
+
+        <div>
+            <center>
+                <table id="ungroupedTable">
+                    <tr>
+                        <td id="tableCell"><h3 style="display: inline;">N</h3></td>
+                        <td id="tableCell"><h3 style="display: inline;">x</h3></td>
+                        <td id="tableCell"><h3 style="display: inline;">/x-M/</h3></td>
+                        <td id="tableCell"><h3 style="display: inline;">/x-M/<sup>2</sup></h3></td>
+                        <td id="tableCell"><h3 style="display: inline;">x<sup>2</sup></h3></td>
+                        <td><h4 style="display: inline;">(x-M)/SD</h4></td>
+                        <td><h5 style="display: inline;">((x-M)/SD)<sup>4</sup></h5></td>
+                    </tr>
+                </table>
+            </center>
+        </div><br>
+        <table id="ungroupedAnswers">
+            <tr>
+                <td>
+                <!-- mean median mode -->
+                    <h4 style="display: inline;">&#8721;x: <h3 style="display: inline;" id="ungroupedSumx"></h3></h4><br>
+                    <h4 style="display: inline;">Mean : <h3 style="display: inline;" id="ungroupedMean"></h3></h4><br>
+                    <h4 style="display: inline;">Median : <h3 style="display: inline;" id="ungroupedMedian"></h3></h4><br>
+                    <h4 style="display: inline;">Mode : <h3 style="display: inline;" id="ungroupedMode"></h3></h4><br>
+                </td>
+            
+                <td>
+                <!-- q -->
+                    <h4 style="display: inline;">Q1 : <h3 style="display: inline;" id="q1"></h3></h4><br>
+                    <h4 style="display: inline;">Q3 : <h3 style="display: inline;" id="q3"></h3></h4><br>
+                    <h4 style="display: inline;">QD : <h3 style="display: inline;" id="qd"></h3></h4><br>
+                </td>
+
+                <td>
+                <!-- d -->
+                    <h4 style="display: inline;">D1 : <h3 style="display: inline;" id="d1"></h3></h4><br>
+                    <h4 style="display: inline;">D3 : <h3 style="display: inline;" id="d3"></h3></h4><br>
+                    <h4 style="display: inline;">D7 : <h3 style="display: inline;" id="d7"></h3></h4><br>
+                    <h4 style="display: inline;">D9 : <h3 style="display: inline;" id="d9"></h3></h4>
+                </td>
+
+                <td>
+                <!-- p -->
+                    <h4 style="display: inline;">P15 : <h3 style="display: inline;" id="p15"></h3></h4><br>
+                    <h4 style="display: inline;">P35 : <h3 style="display: inline;" id="p35"></h3></h4><br>
+                    <h4 style="display: inline;">P65 : <h3 style="display: inline;" id="p65"></h3></h4><br>
+                    <h4 style="display: inline;">P85 : <h3 style="display: inline;" id="p85"></h3></h4>
+                </td>
+
+                
+            </tr>
+            <br><br>
+            <tr>
+                <td>
+                    <h4 style="display: inline;">&#8721;/x-M/: <h3 style="display: inline;" id="x-M"></h3></h4><br>
+                    <h4 style="display: inline;">&#8721;(/x-M/) <sup>2</sup>: <h3 style="display: inline;" id="x-M2"></h3></h4><br>
+                    <h4 style="display: inline;">&#8721;x<sup>2</sup>: <h3 style="display: inline;" id="x2"></h3></h4><br>
+                    <h4 style="display: inline;">&#8721;((/x-M/)/SD)<sup>4</sup>: <h3 style="display: inline;" id="x-MSDU"></h3></h4>
+                </td>
+                <td>
+                    <!-- <h4 style="display: inline;">MAD : <h3 style="display: inline;" id="MadU"></h3></h4><br> -->
+                    <h4 style="display: inline;">SD: <h3 style="display: inline;" id="sdU"></h3></h4><br>
+                    <h4 style="display: inline;">S<sub>1</sub>: <h3 style="display: inline;" id="s1U"></h3></h4><br>
+                    <h4 style="display: inline;">S<sub>2</sub>: <h3 style="display: inline;" id="s2U"></h3></h4><br>
+                </td>
+                <td>
+                    <h4 style="display: inline;">P10: <h3 style="display: inline;" id="p10"></h3></h4><br>
+                    <h4 style="display: inline;">P90: <h3 style="display: inline;" id="p90"></h3></h4><br>
+                    <h4 style="display: inline;">S<sub>QC</sub>: <h3 style="display: inline;" id="sqcU"></h3></h4><br>
+                    <h4 style="display: inline;">S<sub>PC</sub>: <h3 style="display: inline;" id="spcU"></h3></h4><br>
+                </td>
+                <td>
+                    <h4 style="display: inline;">K<sub>1</sub>: <h3 style="display: inline;" id="k1U"></h3></h4><br>
+                    <h4 style="display: inline;">K<sub>2</sub>: <h3 style="display: inline;" id="k2U"></h3></h4><br>
+                    <h4 style="display: inline;">K<sub>3</sub>: <h3 style="display: inline;" id="k3U"></h3></h4><br>
+                </td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <h1>Grouped Data</h1>
+        <input type="number" id="groupTotalcount" placeholder="How Many Row">
+        <button id="manualBtn" onclick="tableDataAdd()">Manual</button>
+        <div>
+                
+        </div>
+        <center>
+            <p>Note: 
+                    *dynamic data gets the class interval limit(Highest and Lowest values) and the <br> range in between to add class interval values to the table <br>
+                    *put a precise value to get accurate answer</p>
+                     
+            
+            <input type="number" placeholder="Lower Limit" id="LowLdata">
+            <input type="number" placeholder="High Limit" id="HighLdata">
+            <input type="number" placeholder="Range Between" id="MidRdata">
+            <button id="dynamicBtn" onclick="DynamicDataCi()">Dynamic</button>
+            <hr>
+
+        <table id="theGroupedAnswers">
+            <tr>
+                <td colspan="5">
+                    <table id="groupedTable" colspan ="4"> 
+                        <tr>
+                            <td><h3 style="display: inline;" style ="column-span: 2;" >Class</h3></td>
+                            <td><h3 style="display: inline;">Intervals</h3></td>
+                            <td><h3 style="display: inline;">f</h3></td>
+                            <td><h3 style="display: inline;">x</h3></td>
+                            <td><h3 style="display: inline;">fx</h3></td>
+                            <td><h3 style="display: inline;">d</h3></td>
+                            <td><h3 style="display: inline;">fd</h3></td>
+                            <td><h3 style="display: inline;">&lt;cf</h3></td>
+                            <td><h3 style="display: inline;">/x-M/</h3></td>
+                            <td><h3 style="display: inline;">f/x-M/</h3></td>
+                            <td><h3 style="display: inline;">fx<sup>2</sup></h3></td>
+                            <td><h4 style="display: inline;">(x-M)/SD</h4></td>
+                            <td><h5 style="display: inline;">((x-M)/SD)<sup>4</sup></h5></td>
+                            <td><h6 style="display: inline;">f(((x-M)/SD)<sup>4</sup>)</h6></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <button onclick="GroupedCalAlgo()">Start</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td> <!-- summations-->
+                        <h4 style="display: inline;">N : <h3 style="display: inline;" id="nG"></h3></h4><br>
+                        <h4 style="display: inline;">&#8721;fx: <h3 style="display: inline;" id="fxG"></h3></h4><br>
+                        <h4 style="display: inline;">&#8721;fd: <h3 style="display: inline;" id="fdG"></h3></h4><br>
+                        <h4 style="display: inline;">&#8721;fx<sup>2</sup>: <h3 style="display: inline;" id="fx2G"></h3></h4>
+                </td>
+                <td>
+                    <!-- mean median mode -->
+                        <h4 style="display: inline;">Mean : <h3 style="display: inline;" id="meanG"></h3></h4><br>
+                        <h4 style="display: inline;">Median : <h3 style="display: inline;" id="medianG"></h3></h4><br>
+                        <h4 style="display: inline;">Mode : <h3 style="display: inline;" id="modeG"></h3></h5></h4>     
+                </td>
+                <td>
+                    <!-- q -->
+                    <h4 style="display: inline;">Q1 : <h3 style="display: inline;" id="q1G"></h3></h4><br>
+                    <h4 style="display: inline;">Q3 : <h3 style="display: inline;" id="q3G"></h3></h4><br>
+                    <h4 style="display: inline;">QD : <h3 style="display: inline;" id="qdG"></h3></h4><br>
+                </td>
+                <td>
+                    <!-- d -->
+                    <h4 style="display: inline;">D1 : <h3 style="display: inline;" id="d1G"></h3></h4><br>
+                    <h4 style="display: inline;">D3 : <h3 style="display: inline;" id="d3G"></h3></h4><br>
+                    <h4 style="display: inline;">D7 : <h3 style="display: inline;" id="d7G"></h3></h4><br>
+                    <h4 style="display: inline;">D9 : <h3 style="display: inline;" id="d9G"></h3></h4>
+                </td>
+                <td>
+                    <!-- p -->
+                    <h4 style="display: inline;">P15 : <h3 style="display: inline;" id="p15G"></h3></h4><br>
+                    <h4 style="display: inline;">P35 : <h3 style="display: inline;" id="p35G"></h3></h4><br>
+                    <h4 style="display: inline;">P65 : <h3 style="display: inline;" id="p65G"></h3></h4><br>
+                    <h4 style="display: inline;">P85 : <h3 style="display: inline;" id="p85G"></h3></h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 style="display: inline;">&#8721;/x-M/: <h3 style="display: inline;" id="x-MG"></h3></h4><br>
+                    <!-- <h4 style="display: inline;">&#8721;(/x-M/) <sup>2</sup>: <h3 style="display: inline;" id="x-M2G"></h3></h4><br> -->
+                    <!-- <h4 style="display: inline;">&#8721;x<sup>2</sup>: <h3 style="display: inline;" id="x2G"></h3></h4><br> -->
+                    <h5 style="display: inline;">&#8721;f(((/x-M/)/SD)<sup>4</sup>): <h3 style="display: inline;" id="fxmSDG"></h3></h5>
+                </td>
+                <td>
+                    <h4 style="display: inline;">MAD : <h3 style="display: inline;" id="MadG"></h3></h4><br>
+                    <h4 style="display: inline;">SD: <h3 style="display: inline;" id="sdG"></h3></h4><br>
+                    <h4 style="display: inline;">S<sub>1</sub>: <h3 style="display: inline;" id="s1G"></h3></h4><br>
+                    <h4 style="display: inline;">S<sub>2</sub>: <h3 style="display: inline;" id="s2G"></h3></h4><br>
+                </td>
+                <td>
+                    <h4 style="display: inline;">P10: <h3 style="display: inline;" id="p10G"></h3></h4><br>
+                    <h4 style="display: inline;">P90: <h3 style="display: inline;" id="p90G"></h3></h4><br>
+                    <h4 style="display: inline;">S<sub>QC</sub>: <h3 style="display: inline;" id="sqcG"></h3></h4><br>
+                    <h4 style="display: inline;">S<sub>PC</sub>: <h3 style="display: inline;" id="spcG"></h3></h4><br>
+                </td>
+                <td>
+                    <h4 style="display: inline;">K<sub>1</sub>: <h3 style="display: inline;" id="k1G"></h3></h4><br>
+                    <h4 style="display: inline;">K<sub>2</sub>: <h3 style="display: inline;" id="k2G"></h3></h4><br>
+                    <h4 style="display: inline;">K<sub>3</sub>: <h3 style="display: inline;" id="k3G"></h3></h4>
+                </td>
+            </tr>
+
+        </table>
+    </center>
+
+    <script src="Stat_andProb.js"></script>
+</body>
+</html>

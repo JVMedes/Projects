@@ -1,0 +1,18 @@
+#ungroupedTable,#groupedTable,#ungroupedAnswers,#theGroupedAnswers{
+    
+    padding: 0px;
+    border-collapse: collapse;
+    text-align: center;
+}
+#ungroupedAnswers tr td{
+    width: 500px;
+}
+.tableData{
+    border-bottom: 1px solid rgb(14, 14, 15);
+    height: 30px;
+    width: 70px;
+    text-align: center;
+}
+#tableCell{
+    text-align: center;
+}
