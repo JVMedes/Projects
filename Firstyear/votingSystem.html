@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting System</title>
+
+     <!-- Prism CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <!-- Prism Line Numbers CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    
+    
+</head>
+<body>
+    <pre class="line-numbers"><code class="language-c">
+        #include &lt;stdio.h&gt;
+        void vote();
+        void cande();
+        void dis1();
+        void dis12();
+        void dis2();
+        void dis3();
+        void dioop();
+        void vter();
+        void tcof();
+        //vote count
+        int vchos,p1,p2,vp1,vp2,sec1,sec2;
+        int tre1,tre2,tre3,pro1[]={0,0,0,0},pro2[]={0,0,0,0};
+        int aud1[]={0,0,0,0},aud2[]={0,0,0,0};
+        //student in
+        int course=0,von[41],Course[41],nne,voon;
+        char iname[30],isname[30],name[40] [30],sname[40] [30],sn[41] [30],isn[41];
+        //names
+        char cp[2] [20],cvp[2] [20],csec[2] [20];
+        char cp2[2] [20],cvp2[2] [20],csec2[2] [20],ctre[3] [20],ctre2[3] [20];
+        char caud[8] [20],caud2[8] [20];
+        char cpro[8] [20],cpro2[8] [20];
+        //voter list
+        int num,yb;
+        //disign
+        int lop,x,y,x1,y1,otw;
+        char bor;
+        //choice
+        int c=1,c1,vc,c22,c3;
+        //checker
+        int d1,rt,ln,cnr,cnr2,rrt,bg,bg1,k;
+
+        main()
+        {
+                //this is para sa info ng stdt    Vote  Candedate    
+            FILE*wr,*wrr,*wrrr,*wtr,*vr,*vrr,*vr1,*vrr1,*can,*can2;
+            vr=fopen("Vote.txt","r");
+            vrr=fopen("Votee.txt","r");
+            can=fopen("candedates.txt","r");
+            can2=fopen("candate.txt","r");
+                                
+                                    fscanf(vr,"%i %i",&p1,&p2);
+                                    fscanf(vr,"%i %i",&vp1,&vp2);
+                                    fscanf(vr,"%i %i",&sec1,&sec2);
+                                    fscanf(vr,"%i %i %i",&tre1,&tre2,&tre3);
+                                    fclose(vr);
+
+                                    for (lop = 0; lop <8;lop++){
+                                        fscanf(vrr,"%i %i",&aud1[lop],&aud2[lop]);
+                                        fscanf(vrr,"%i %i",&pro1[lop],&pro2[lop]);
+                                    }
+                                    fclose(vrr);
+
+                                clrscr();
+
+                                wrr=fopen("STII.txt","r");
+                                for (lop = 0; lop < 40;lop++)
+                                {
+                                    fscanf(wrr,"%s\n",&sn[lop]);
+                                }
+                                fclose(wrr);
+
+                                wr=fopen("STI.txt","r");
+                                for (lop = 0; lop < 40;lop++)
+                                {
+                                    fscanf(wr,"%s %s",&name[lop],&sname[lop]);
+                                }
+                                fclose(wr);
+
+                                wrrr=fopen("SnTI.txt","r");
+                                for (lop = 0; lop < 40;lop++)
+                                {
+                                    fscanf(wrrr,"%i %i",&Course[lop],&von[lop]);
+                                }
+                                fclose(wrrr);
+
+
+                                
+                        d1=0,c=1;
+                        bor=178;
+                    while(c!=0)
+
+                        {
+                            c3=1;
+                                                fscanf(can,"%s %s",&cp[0],&cp2[0]);
+                                                fscanf(can,"%s %s",&cvp[0],&cvp2[0]);
+                                                fscanf(can,"%s %s",&csec[0],&csec2[0]);
+                                                fscanf(can,"%s %s",&cp[1],&cp2[1]);
+                                                fscanf(can,"%s %s",&cvp[1],&cvp2[1]);
+                                                fscanf(can,"%s %s",&csec[1],&csec2[1]);
+                                                fscanf(can,"%s %s",&ctre[0],&ctre2[0]); 
+                                                fscanf(can,"%s %s",&ctre[1],&ctre2[1]); 
+                                                fscanf(can,"%s %s",&ctre[2],&ctre2[2]); 
+                                                
+                                                for(otw=0;otw<8;otw++){
+                                                
+                                                fscanf(can2,"%s %s",&caud[otw],&caud2[otw]);
+                                                fscanf(can2,"%s %s",&cpro[otw],&cpro2[otw]);
+                                                }
+
+                        if (d1==0)
+                        {
+                            dis1();
+                        }
+                        if (d1!=0)
+                        {
+                            dis12();
+                        }
+                        d1++,c=1;
+                        
+                        gotoxy(35,3);
+                        printf(" MAIN MENU ");
+                        gotoxy(24,9);
+                        printf("1..Start Voting");
+                        gotoxy(25,15);
+                        printf("2..Candedates");
+                        gotoxy(44,9);
+                        printf("3..Count Of Votes");
+                        gotoxy(45,15);
+                        printf("4..Voters List");
+                        gotoxy(72,21);
+                        printf("0..Exit");
+                        gotoxy(2,23);
+                        printf("Enter Here:");
+                        scanf("%i",&c);
+                        
+
+                            switch(c){
+                                case 1:
+                                        vote();
+                                    break;
+                                case 2:
+                                                                c3=1;
+                                                                while(c3!=0){
+                                                                    clrscr();
+                                                                    printf("1..Input Candedates Name\n");
+                                                                    printf("2..List Of Candedates\n");
+                                                                    printf("0..To Exit\n\n");
+                                                                    printf("Enter Here:");
+                                                                    scanf("%i",&c3);
+                                                                    switch(c3){
+                                                                        case 1:
+                                                                            cande();
+                                                                            break;
+                                                                        case 2:
+                                                                        clrscr();
+                                                                            fscanf(can,"%s %s",&cp[0],&cp2[0]);
+                                                                            fscanf(can,"%s %s",&cvp[0],&cvp2[0]);
+                                                                            fscanf(can,"%s %s",&csec[0],&csec2[0]);
+                                                                            fscanf(can,"%s %s",&cp[1],&cp2[1]);
+                                                                            fscanf(can,"%s %s",&cvp[1],&cvp2[1]);
+                                                                            fscanf(can,"%s %s",&csec[1],&csec2[1]);
+                                                                            fscanf(can,"%s %s",&ctre[0],&ctre2[0]); 
+                                                                            fscanf(can,"%s %s",&ctre[1],&ctre2[1]); 
+                                                                            fscanf(can,"%s %s",&ctre[2],&ctre2[2]);
+                                                                            
+                                                                            for(otw=0;otw<8;otw++){
+                                                                            
+                                                                            fscanf(can2,"%s %s",&caud[otw],&caud2[otw]);
+                                                                            fscanf(can2,"%s %s",&cpro[otw],&cpro2[otw]);
+                                                                            }
+                                                                                    bg=1;
+                                                                                    printf("\n\nPresident\n");
+                                                                                    for(lop=0;lop<2;lop++){
+                                                                                        printf("%i--%s %s\n",bg,cp[lop],cp2[lop]);
+                                                                                        bg++;
+                                                                                    }        bg=1;
+                                                                                    printf("\n\nVice President\n");
+                                                                                    for(lop=0;lop<2;lop++){
+                                                                                        printf("%i--%s %s\n",bg,cvp[lop],cvp2[lop]);
+                                                                                        bg++;
+                                                                                    }     
+                                                                                    printf("Press Enter To Go Next");
+                                                                                    getch();
+                                                                                    clrscr(); 
+                                                                                        bg=1;
+                                                                                    printf("\n\nSecretary\n");
+                                                                                    for(lop=0;lop<2;lop++){
+                                                                                        printf("%i--%s %s\n",bg,csec[lop],csec2[lop]);
+                                                                                        bg++;
+                                                                                    }          bg=1;
+
+                                                                                    
+
+                                                                                    printf("\n\nTreasurer\n");
+                                                                                    for(lop=0;lop<3;lop++){
+                                                                                    printf("%i--%s %s\n",bg,ctre[lop],ctre2[lop]);
+                                                                                    bg++;
+                                                                                    }
+                                                                                    printf("Press Enter To Go Next");
+                                                                                    getch();
+                                                                                    clrscr(); 
+                                                                                            
+                                                                                    printf("\n\nAuditor\n");
+                                                                                    for(lop=0;lop<8;lop++){
+                                                                                        printf("%i--%s %s\n",bg,caud[lop],caud2[lop]);
+                                                                                        bg++;
+                                                                                    } 
+                                                                                    printf("Press Enter To Go Next");
+                                                                                    getch();
+                                                                                    clrscr(); 
+                                                                                    
+
+                                                                                        bg=1;
+                                                                                    printf("\n\nP,R.O.\n");
+                                                                                    for(lop=0;lop<8;lop++){
+                                                                                        printf("%i--%s %s\n",bg,cpro[lop],cpro2[lop]);
+                                                                                        bg++;
+                                                                                    }          bg=1;
+                                                                                    printf("Press Enter To Go Next");
+                                                                                    getch();
+
+                                                                            break;
+                                                                        case 0:
+                                                                            c3=0;
+                                                                            break;
+                                                                        default:
+                                                                            clrscr();
+                                                                            gotoxy(10,12);
+                                                                            printf("INVALID!");
+                                                                            getch();
+                                                                            c3=1;
+                                                                            break;
+                                                                    }
+                                                                }
+                                    break;
+                                case 3:
+                                    tcof();
+                                    break;
+                                case 4:
+                                    vter();				
+                                    break; 
+                                case 0:
+                                        c=0;
+                                    break;
+                                default:
+                                        gotoxy(70,23);
+                                        printf("INVALID!");
+                                        getch();
+                                        c=1;
+                                    break;
+
+                            }//end ng switch
+                    }//end ng while
+                
+                                    vr1=fopen("Vote.txt","w");
+                    
+
+                                    fprintf(vr1,"%i %i\n",p1,p2);
+                                    fprintf(vr1,"%i %i\n",vp1,vp2);
+                                    fprintf(vr1,"%i %i\n",sec1,sec2);
+                                    fprintf(vr1,"%i %i %i\n",tre1,tre2,tre3);
+                                    fclose(vr1);
+
+                                    vrr1=fopen("Votee.txt","w");
+                                    for (lop = 0; lop <8;lop++){
+                                        fprintf(vrr1,"%i %i\n",aud1[lop],aud2[lop]);
+                                        fprintf(vrr1,"%i %i\n",pro1[lop],pro2[lop]);
+                                    }
+                                    fclose(vrr1);
+
+                                wtr=fopen("SnTI.txt","w");
+                                for (lop = 0; lop < 40;lop++)
+                                {
+                                    fprintf(wtr,"%i %i\n",Course[lop],von[lop]);
+                                }
+                                fclose(wtr);
+            
+            
+            
+                                fclose(can);
+                                fclose(can2);  
+        }
+        //++++++++++Voooteee+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        void vote()
+        {
+
+            c1=1,rt=0;
+                while(c1!=0)
+                {
+                    clrscr();
+                    if (rt==0)
+                    {
+                        dis2();
+                    }
+                    rt++;
+                            x=40,x1=41;
+                            for ( lop = 0; lop <10 ;lop++)
+                                {
+                                    gotoxy(x,1);
+                                    printf("%c", bor);
+                                    gotoxy(x,5);
+                                    printf("%c", bor);
+                                    x--;
+                                    gotoxy(x1,1);
+                                    printf("%c", bor);
+                                    gotoxy(x1,5);
+                                    printf("%c", bor);
+                                    x1++;
+                                }	
+
+                                    gotoxy(31,2);
+                                    printf("%c", bor);
+                                    gotoxy(31,4);
+                                    printf("%c", bor);
+                                    gotoxy(50,2);
+                                    printf("%c", bor);
+                                    gotoxy(50,4);
+                                    printf("%c", bor);
+
+
+                                x=31,x1=50;
+                            for ( lop = 0; lop <30 ;lop++)
+                                {
+                                    gotoxy(x,3);
+                                    printf("%c", bor);
+                                    x--;
+                                    gotoxy(x1,3);
+                                    printf("%c", bor);
+                                    x1++;
+                                }
+
+
+                                y=4;
+
+                            for ( lop = 0; lop <20 ;lop++)
+                                {
+                                    gotoxy(2,y);
+                                    printf("%c", bor);
+                                    gotoxy(79,y);
+                                    printf("%c", bor);
+                                    y++;
+                                }
+
+                            x=78,x1=3;
+                            for ( lop = 0; lop <76 ;lop++)
+                                {
+                                    gotoxy(x,19);
+                                    printf("%c", bor);
+                                    x--;
+                                    gotoxy(x1,23);
+                                    printf("%c", bor);
+                                    x1++;
+                                }	
+
+
+                            x=3,x1=78;
+                            for ( lop = 0; lop <38 ;lop++)
+                                {
+                                    gotoxy(x,10);
+                                    printf("%c", bor);
+                                    gotoxy(x,14);
+                                    printf("%c", bor);
+                                    x++;
+                                    gotoxy(x1,10);
+                                    printf("%c", bor);
+                                    gotoxy(x1,14);
+                                    printf("%c", bor);
+                                    x1--;
+                                }
+                                gotoxy(34,3);
+                                printf("Identification");
+                                gotoxy(10,7);
+                                printf("Name:");
+                                gotoxy(25,8);
+                                printf("First Name");
+                                gotoxy(50,8);
+                                printf("Surname");
+                                gotoxy(30,12);
+                                printf("Student Number:");
+                                gotoxy(10,16);
+                                printf("Department:");
+                                gotoxy(20,17);
+                                printf("1..CET");
+                                gotoxy(33,17);
+                                printf("2..CTE");
+                                gotoxy(48,17);
+                                printf("3..CBA");
+                                gotoxy(60,17);
+                                printf("4..CAS");
+                                gotoxy(25,7);
+                                scanf("%s",&iname);
+                                gotoxy(50,7);
+                                scanf("%s",&isname);
+                                gotoxy(46,12);
+                                scanf("%s",&isn);
+                                gotoxy(21,16);
+                                scanf("%i",&course);
+
+
+                                x=77,x1=4,nne=0,voon=0,ln=0,rrt=0;
+                                    for ( lop = 0; lop <37 ;lop++)
+                                        {
+                                            gotoxy(x,21);
+                                            printf("%c", bor);
+                                            x--;
+                                            gotoxy(x1,21);
+                                            printf("%c", bor);
+                                            x1++;
+                                            delay(50);
+                                        }	
+                                        x=77,x1=4;
+                                    for ( lop = 0; lop <37 ;lop++)
+                                        {
+                                            gotoxy(x,21);
+                                            printf(" ");
+                                            x--;
+                                            gotoxy(x1,21);
+                                            printf(" ");
+                                            x1++;
+                                        }
+
+                                for (lop = 0; lop < 41; lop++)
+                                {
+                                    if (strcmp(iname,name[lop])==0)
+                                    {
+                                        nne++;
+                                        rrt=lop;
+                                        if (strcmp(isname,sname[lop])==0)
+                                        {
+                                            ln++;
+                                            if (strcmp(isn,sn[lop])==0)
+                                            {
+                                                if (course==Course[lop])
+                                                {
+                                                    if (von[lop]==0){
+                                                        von[lop]++;
+
+                                                        gotoxy(42,21);
+                                                        printf("Student Verified");
+                                                        clrscr();
+                                                        y1=1,x1=1,x=80,y=24;
+                                                            for (lop = 0; lop < 24; lop++)
+                                                            {
+                                                                gotoxy(2,y1);
+                                                                printf("%c",bor);
+                                                                y1++;
+                                                                gotoxy(79,y);
+                                                                printf("%c",bor);
+                                                                y--;
+                                                                delay(30);
+                                                            }
+                                                            for (lop = 0; lop < 80; lop++)
+                                                            {
+                                                                gotoxy(x1,2);
+                                                                printf("%c",bor);
+                                                                x1++;
+                                                                gotoxy(x,23);
+                                                                printf("%c",bor);
+                                                                x--;
+                                                                delay(20);
+                                                            }	
+                                                            gotoxy(34,5);
+                                                            printf("Instruction");
+                                                            gotoxy(23,10);
+                                                            printf("Theres no returning so choose wisely..");
+                                                            gotoxy(23,12);
+                                                            printf("If your answer is invalid..");
+                                                            gotoxy(23,14);
+                                                            printf("It will not be counted");
+                                                            gotoxy(30,20);
+                                                            printf("Press Enter to go Next");
+                                                            getch();
+
+                                                            dis3();
+
+                                                                        gotoxy(30,4);
+                                                                        printf("Candidates for President");
+                                                                        gotoxy(20,10);
+                                                                        printf("1--%s %s",cp[0] ,cp2[0]);
+                                                                        gotoxy(20,13);
+                                                                        printf("2--%s %s",cp[1] ,cp2[1]);
+                                                                        gotoxy(40,17);
+                                                                        scanf("%i",&vc);
+
+                                                                                switch(vc){
+
+                                                                                case 1:
+                                                                                    p1++;
+                                                                                break;
+                                                                                case 2:
+                                                                                    p2++;
+                                                                                break;
+                                                                                }
+
+                                                                        gotoxy(30,20);
+                                                                        printf("Press Enter To Go Next");
+                                                            dis3();
+
+                                                                        gotoxy(30,4);
+                                                                        printf("Candidates for Vice President");
+                                                                        gotoxy(20,10);
+                                                                        printf("1--%s %s",cvp[0] ,cvp2[0]);
+                                                                        gotoxy(20,13);
+                                                                        printf("2--%s %s",cvp[1] ,cvp2[1]);
+                                                                        gotoxy(40,17);
+                                                                        scanf("%i",&vc);
+
+                                                                                switch(vc){
+
+                                                                                case 1:
+                                                                                    vp1++;
+                                                                                break;
+                                                                                case 2:
+                                                                                    vp2++;
+                                                                                break;
+                                                                                }
+                                                                        gotoxy(30,20);
+                                                                        printf("Press Enter To Go Next");
+                                                            dis3();
+
+                                                                        gotoxy(30,4);
+                                                                        printf("Candidates for Secretary");
+                                                                        gotoxy(20,10);
+                                                                        printf("1--%s %s",csec[0] ,csec2[0]);
+                                                                        gotoxy(20,13);
+                                                                        printf("2--%s %s",csec[1] ,csec2[1]);
+                                                                        gotoxy(40,17);
+                                                                        scanf("%i",&vc);
+
+                                                                                switch(vc){
+
+                                                                                case 1:
+                                                                                    sec1++;
+                                                                                break;
+                                                                                case 2:
+                                                                                    sec2++;
+                                                                                break;
+                                                                                }
+                                                                        gotoxy(30,20);
+                                                                        printf("Press Enter To Go Next");
+                                                            dis3();
+
+                                                                        gotoxy(30,4);
+                                                                        printf("Candidates for Tresurer");
+                                                                        gotoxy(20,8);
+                                                                        printf("1--%s %s",ctre[0],ctre2[0]);
+                                                                        gotoxy(20,11);
+                                                                        printf("2--%s %s",ctre[1],ctre2[1]);
+                                                                        gotoxy(20,14);
+                                                                        printf("3--%s %s",ctre[2],ctre2[2]);
+                                                                        gotoxy(40,17);
+                                                                        scanf("%i",&vc);
+
+                                                                                switch(vc){
+
+                                                                                case 1:
+                                                                                    tre1++;
+                                                                                break;
+                                                                                case 2:
+                                                                                    tre2++;
+                                                                                break;
+                                                                                case 3:
+                                                                                    tre3++;
+                                                                                break;
+                                                                                }
+                                                                        gotoxy(30,20);
+                                                                        printf("Press Enter To Go Next");
+                                                            dis3();
+                                                                        if (course==1)
+                                                                        {
+                                                                            cnr=0,cnr2=0;
+                                                                        }
+                                                                        if (course==2)
+                                                                        {
+                                                                            cnr=2,cnr2=1;
+                                                                        }
+                                                                        if (course==3)
+                                                                        {
+                                                                            cnr=4,cnr2=2;
+                                                                        }
+                                                                        if (course==4)
+                                                                        {
+                                                                            cnr=6,cnr2=3;
+                                                                        }
+
+
+                                                                        gotoxy(30,4);
+                                                                        printf("Candidates for Auditor");
+                                                                        gotoxy(20,10);
+                                                                        printf("1--%s %s",caud[cnr] ,caud2[cnr]);
+                                                                        cnr++;
+                                                                        gotoxy(20,13);
+                                                                        printf("2--%s %s",caud[cnr] ,caud2[cnr]);
+                                                                        gotoxy(40,17);
+                                                                        scanf("%i",&vc);
+
+                                                                                switch(vc){
+
+                                                                                case 1:
+                                                                                    aud1[cnr2]++;
+                                                                                break;
+                                                                                case 2:
+                                                                                    aud2[cnr2]++;
+                                                                                break;
+                                                                                }
+                                                                        gotoxy(30,20);
+                                                                        printf("Press Enter To Go Next");
+                                                            dis3();
+                                                                        if (course==1)
+                                                                        {
+                                                                            cnr=0,cnr2=0;
+                                                                        }
+                                                                        if (course==2)
+                                                                        {
+                                                                            cnr=2,cnr2=1;
+                                                                        }
+                                                                        if (course==3)
+                                                                        {
+                                                                            cnr=4,cnr2=2;
+                                                                        }
+                                                                        if (course==4)
+                                                                        {
+                                                                            cnr=6,cnr2=3;
+                                                                        }
+
+
+                                                                        gotoxy(30,4);
+                                                                        printf("Candidates for P.R.O.");
+                                                                        gotoxy(20,10);
+                                                                        printf("1--%s %s",cpro[cnr] ,cpro2[cnr]);
+                                                                        cnr++;
+                                                                        gotoxy(20,13);
+                                                                        printf("2--%s %s",cpro[cnr] ,cpro2[cnr]);
+                                                                        gotoxy(40,17);
+                                                                        scanf("%i",&vc);
+
+                                                                                switch(vc){
+
+                                                                                case 1:
+                                                                                    pro1[cnr2]++;
+                                                                                break;
+                                                                                case 2:
+                                                                                    pro2[cnr2]++;
+                                                                                break;
+                                                                                }
+                                                                        gotoxy(58,22);
+                                                                        printf("1.Next Voter 0.Exit");
+                                                                        scanf("%i",&c1);
+
+                                                                        
+                                                        voon++;
+                                                    }
+                                                    if (von[lop]!=0 && voon==0){
+                                                        gotoxy(4,21);
+                                                        printf("You Already Done Boting Thank You");
+                                                        getch();
+                                                        break;
+                                                    }
+                                                }//course end
+                                                if (course!=Course[lop] && voon==0){
+                                                        gotoxy(4,21);
+                                                        printf("Course Not Matched");
+                                                        gotoxy(63,21);
+                                                        printf("1.Reset 0.Exit");
+                                                        scanf("%i",&c1);
+                                                        lop=41;
+                                                        break;
+                                                }
+                                                
+                                            }
+                                            if (strcmp(isn,sn[lop])!=0 && voon==0){
+                                                gotoxy(4,21);
+                                                printf("Student Number Not Matched");
+                                                gotoxy(63,21);
+                                                printf("1.Reset 0.Exit");
+                                                scanf("%i",&c1);	
+                                                break;
+                                                lop=41;					}
+                                        }//end ng surname
+                                    }//end ng first name
+                                } //end ng looping
+                                if (nne==0 && ln==0)
+                                {
+                                    gotoxy(4,21);
+                                    printf("Wrong Name or No Record");
+                                    gotoxy(63,21);
+                                    printf("1.Reset 0.Exit");
+                                    scanf("%i",&c1);
+                                    break;
+                                }
+                                
+                }//while end
+        }
+        void tcof(){
+            clrscr();
+            printf("President");
+            printf("\n\n%s %s-----------",cp[0],cp2[0]);
+            printf("%i",p1);
+            printf("\n%s %s-----------",cp[1],cp2[1]);
+            printf("%i",p2);
+            printf("\n\nVice President");
+            printf("\n\n%s %s-----------",cvp[0],cvp2[0]);
+            printf("%i",vp1);
+            printf("\n%s %s-----------",cvp[1],cvp2[1]);
+            printf("%i",vp2);
+            printf("\n\nSecretary");
+            printf("\n\n%s %s-----------",csec[0],csec2[0]);
+            printf("%i",sec1);
+            printf("\n%s %s-----------",csec[1],csec2[1]);
+            printf("%i",sec2);
+            printf("\n\nTreasurer");
+            printf("\n\n%s %s-----------",ctre[0],ctre2[0]);
+            printf("%i",tre1);
+            printf("\n%s %s-----------",ctre[1],ctre2[1]);
+            printf("%i",tre2);
+            printf("\n%s %s-----------",ctre[2],ctre2[2]);
+            printf("%i",tre3);
+            getch();
+            clrscr();
+            printf("Auditor");
+            printf("\n\n%s %s-----------",caud[0],caud2[0]);
+            printf("%i",aud1[0]);
+            printf("\n\n%s %s-----------",caud[1],caud2[1]);
+            printf("%i",aud2[0]);
+            printf("\n\n%s %s-----------",caud[2],caud2[2]);
+            printf("%i",aud1[1]);
+            printf("\n\n%s %s-----------",caud[3],caud2[3]);
+            printf("%i",aud2[1]);
+            printf("\n\n%s %s-----------",caud[4],caud2[4]);
+            printf("%i",aud1[2]);
+            printf("\n\n%s %s-----------",caud[5],caud2[5]);
+            printf("%i",aud2[2]);
+            printf("\n\n%s %s-----------",caud[6],caud2[6]);
+            printf("%i",aud1[3]);
+            printf("\n\n%s %s-----------",caud[7],caud2[7]);
+            printf("%i",aud2[3]);
+            getch();
+            clrscr();
+            printf("\n\nP.R.O.");
+            printf("\n\n%s %s-----------",cpro[0],cpro2[0]);
+            printf("%i",pro1[0]);
+            printf("\n\n%s %s-----------",cpro[1],cpro2[1]);
+            printf("%i",pro2[0]);
+            printf("\n\n%s %s-----------",cpro[2],cpro2[2]);
+            printf("%i",pro1[1]);
+            
+            printf("\n\n%s %s-----------",cpro[3],cpro2[3]);
+            printf("%i",pro2[1]);
+            printf("\n\n%s %s-----------",cpro[4],cpro2[4]);
+            printf("%i",pro1[2]);
+            printf("\n\n%s %s-----------",cpro[5],cpro2[5]);
+            printf("%i",pro2[2]);
+            printf("\n\n%s %s-----------",cpro[6],cpro2[6]);
+            printf("%i",pro1[3]);
+            printf("\n\n%s %s-----------",cpro[7],cpro2[7]);
+            printf("%i",pro2[3]);
+            getch();
+            clrscr();
+        }
+        void vter(){
+            num=1;yb=6;
+                                                clrscr();
+                                                        for (lop = 0; lop < 40;lop++)
+                                                        {
+                                                            k=lop;
+                                                                    
+                                                                    if(lop==0 || lop==9 || lop==18 || lop==27 || lop==36){
+                                                                        dioop();
+                                                                        yb=6;
+                                                                        gotoxy(10,3);
+                                                                        printf("Voters List");
+                                                                        gotoxy(63,3);
+                                                                        printf("Vote Status");
+                                                                        lop=k;
+                                                                    }
+                                                                    gotoxy(5,yb);
+                                                                    printf("%i. %s %s",num,name[lop],sname[lop]);
+                                                                    
+                                                                    if (Course[lop]==1){
+                                                                        gotoxy(54,yb);
+                                                                        printf("CET");
+                                                                    }
+                                                                    if (Course[lop]==2){
+                                                                        gotoxy(54,yb);
+                                                                        printf("CTE");
+                                                                    }
+                                                                    if (Course[lop]==3){
+                                                                        gotoxy(54,yb);
+                                                                        printf("CBA");
+                                                                    }
+                                                                    if (Course[lop]==4){
+                                                                        gotoxy(54,yb);
+                                                                        printf("CAS");
+                                                                    }
+
+                                                                    if (von[lop]==1){
+                                                                        gotoxy(64,yb);
+                                                                        printf("Done");
+                                                                    }
+                                                                    if (von[lop]==0){
+                                                                        gotoxy(64,yb);
+                                                                        printf("Not Done");
+                                                                    }
+                                                                    yb=yb+2;
+                                                                    num++;
+
+
+                                                                    if(lop==8 || lop==17 || lop==26 || lop==39){
+                                                                        
+                                                                        getch();
+                                                                        
+                                                                    }
+                                                        }
+        }
+        // ======Candedates====++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        void cande(){
+            FILE*rn2,*rn22;
+            c22=1;
+            while(c22!=0){								
+                                                                        bg=1;
+                                                                        for(lop=0;lop<2;lop++){
+                                                                        clrscr();
+                                                                        gotoxy(28,2);
+                                                                        printf("Please Fill In Details");
+
+                                                                        gotoxy(28,4);
+                                                                        printf("Candedate For President #%i",bg);
+                                                                        gotoxy(29,8);
+                                                                        printf("First Name:");
+                                                                        scanf("%s",&cp[lop]);
+                                                                        gotoxy(29,11);
+                                                                        printf("Second Name:");
+                                                                        scanf("%s",&cp2[lop]);
+                                                                        bg++;
+
+                                                                        gotoxy(29,15);
+                                                                        printf("Press Enter to Go Next");
+                                                                        getch();
+                                                                        }
+                                                                        bg=1;
+                                                                        for(lop=0;lop<2;lop++){
+                                                                        clrscr();
+                                                                        gotoxy(28,2);
+                                                                        printf("Please Fill In Details");
+
+                                                                        gotoxy(28,4);
+                                                                        printf("Candedate For Vice President #%i",bg);
+                                                                        gotoxy(29,8);
+                                                                        printf("First Name:");
+                                                                        scanf("%s",cvp[lop]);
+                                                                        gotoxy(29,11);
+                                                                        printf("Second Name:");
+                                                                        scanf("%s",cvp2[lop]);
+                                                                        bg++;
+                                                                        
+                                                                        gotoxy(29,15);
+                                                                        printf("Press Enter to Go Next");
+                                                                        getch();			
+                                                                        }
+                                                                        bg=1;
+                                                                        for(lop=0;lop<2;lop++){
+                                                                        clrscr();
+                                                                        gotoxy(28,2);
+                                                                        printf("Please Fill In Details");
+
+                                                                        gotoxy(28,4);
+                                                                        printf("Candedate For Secretary #%i",bg);
+                                                                        gotoxy(29,8);
+                                                                        printf("First Name:");
+                                                                        scanf("%s",csec[lop]);
+                                                                        gotoxy(29,11);
+                                                                        printf("Second Name:");
+                                                                        scanf("%s",csec2[lop]);
+                                                                        bg++;
+
+                                                                        gotoxy(29,15);
+                                                                        printf("Press Enter to Go Next");
+                                                                        getch();	
+                                                                        }		
+                                                        
+                                                                        bg=1;
+                                                                        for(lop=0;lop<3;lop++){
+                                                                            clrscr();
+                                                                            gotoxy(28,2);
+                                                                            printf("Please Fill In Details");
+
+                                                                            gotoxy(28,4);
+                                                                            printf("Candedate For Treasurer #%i",bg);
+                                                                            gotoxy(29,8);
+                                                                            printf("First Name:");
+                                                                            scanf("%s",&ctre[lop]);
+                                                                            gotoxy(29,11);
+                                                                            printf("Second Name:");
+                                                                            scanf("%s",&ctre2[lop]);
+                                                                            bg++;
+
+                                                                            gotoxy(29,15);
+                                                                            printf("Press Enter to Go Next");
+                                                                            getch(); 
+                                                                        }	
+                                                                        bg=1,bg1=1;
+                                                                        for(lop=0;lop<8;lop++){
+                                                                        clrscr();
+
+                                                                        if (bg==1)
+                                                                        {
+                                                                            clrscr();
+                                                                            printf("CET Representatives");
+                                                                        }
+                                                                        if (bg==3)
+                                                                        {
+                                                                            clrscr();
+                                                                            printf("CTE Representatives");
+                                                                            bg1=1;
+                                                                        }
+                                                                        if (bg==5)
+                                                                        {
+                                                                            clrscr();
+                                                                            printf("CAS Representatives");
+                                                                            bg1=1;
+                                                                        }
+                                                                        if (bg==7)
+                                                                        {
+                                                                            clrscr();
+                                                                            printf("CBA Representatives");
+                                                                            bg1=1;
+                                                                        }
+
+                                                                        gotoxy(28,2);
+                                                                        printf("Please Fill In Details");
+
+                                                                        gotoxy(28,4);
+                                                                        printf("Candedate For Auditor #%i",bg1);
+
+
+                                                                        gotoxy(29,8);
+                                                                        printf("First Name:");
+                                                                        scanf("%s",&caud[lop]);
+
+                                                                        gotoxy(29,11);
+                                                                        printf("Second Name:");
+                                                                        scanf("%s",&caud2[lop]);
+
+                                                                        bg++,bg1++;
+                                                                        gotoxy(29,15);
+                                                                        printf("Press Enter to Go Next");
+                                                                        getch();
+                                                                            }
+                                                                        bg=1,bg1=1;
+                                                        
+                                                                        for(lop=0;lop<8;lop++){
+                                                                        clrscr();
+                                                                        if (bg==1)
+                                                                        {
+                                                                            clrscr();
+                                                                            printf("CET Representatives");
+                                                                        }
+                                                                        if (bg==3)
+                                                                        {
+                                                                            clrscr();
+                                                                            printf("CTE Representatives");
+                                                                            bg1=1;
+                                                                        }
+                                                                        if (bg==5)
+                                                                        {
+                                                                            clrscr();
+                                                                            printf("CAS Representatives");
+                                                                            bg1=1;
+                                                                        }
+                                                                        if (bg==7)
+                                                                        {
+                                                                            clrscr();
+                                                                            printf("CBA Representatives");
+                                                                            bg1=1;
+                                                                        }
+
+                                                                        gotoxy(28,2);
+                                                                        printf("Please Fill In Details");
+
+                                                                        gotoxy(28,4);
+                                                                        printf("Candedate For P.R.O. #%i",bg1);
+
+
+                                                                        gotoxy(29,8);
+                                                                        printf("First Name:");
+                                                                        scanf("%s",&cpro[lop]);
+
+                                                                        gotoxy(29,11);
+                                                                        printf("Second Name:");
+                                                                        scanf("%s",&cpro2[lop]);
+
+                                                                        bg++,bg1++;
+                                                                        gotoxy(29,15);
+                                                                        printf("Press Enter to Go Next");
+                                                                        getch();
+                                                                                }
+
+                                                                        clrscr();
+                                                                        printf("Input any Number to Re-Input all Candedates\n");
+                                                                        printf("0..To Exit\n");
+                                                                        printf("Enter Here:");
+                                                                        scanf("%i",&c22);
+            }
+                                                rn2=fopen("candedates.txt","w");
+                                                fprintf(rn2,"%s %s\n",cp[0],cp2[0]);
+                                                fprintf(rn2,"%s %s\n",cvp[0],cvp2[0]);
+                                                fprintf(rn2,"%s %s\n",csec[0],csec2[0]);
+                                                fprintf(rn2,"%s %s\n",cp[1],cp2[1]);
+                                                fprintf(rn2,"%s %s\n",cvp[1],cvp2[1]);
+                                                fprintf(rn2,"%s %s\n",csec[1],csec2[1]);
+                                                fprintf(rn2,"%s %s\n",ctre[0],ctre2[0]);
+                                                fprintf(rn2,"%s %s\n",ctre[1],ctre2[1]);
+                                                fprintf(rn2,"%s %s\n",ctre[2],ctre2[2]);
+                                                fclose(rn2);
+                                                rn22=fopen("candate.txt","w");
+                                                for(otw=0;otw<8;otw++){
+                                                
+                                                fprintf(rn22,"%s %s\n",caud[otw],caud2[otw]); 
+                                                fprintf(rn22,"%s %s\n",cpro[otw],cpro2[otw]); 
+                                                }
+                                                fclose(rn22);
+        }
+        // ======Design====++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        void dis1()
+        {
+            clrscr();
+                y=1;
+                for(lop=0;lop<24;lop++){
+                    gotoxy(1,y);
+                    printf("%c",bor);
+                    gotoxy(80,y);
+                    printf("%c",bor);
+                    y++;
+                    delay(30);
+                }
+                x=2;
+                for(lop=0;lop<78;lop++){
+                    gotoxy(x,1);
+                    printf("%c",bor);
+                    gotoxy(x,22);
+                    printf("%c",bor);
+                    gotoxy(x,24);
+                    printf("%c",bor);
+                    gotoxy(x,3);
+                    printf("%c",bor);
+                    delay(20);
+                    x++;
+                }
+        }
+        void dis12()
+        {
+            clrscr();
+                y=1;
+                for(lop=0;lop<24;lop++){
+                    gotoxy(1,y);
+                    printf("%c",bor);
+                    gotoxy(80,y);
+                    printf("%c",bor);
+                    y++;
+                }
+                x=2;
+                for(lop=0;lop<78;lop++){
+                    gotoxy(x,1);
+                    printf("%c",bor);
+                    gotoxy(x,22);
+                    printf("%c",bor);
+                    gotoxy(x,24);
+                    printf("%c",bor);
+                    gotoxy(x,3);
+                    printf("%c",bor);
+                    x++;
+                }
+        }
+        void dis2()
+        {
+            x=40,x1=41;
+            for ( lop = 0; lop <10 ;lop++)
+                {
+                    gotoxy(x,1);
+                    printf("%c", bor);
+                    gotoxy(x,5);
+                    printf("%c", bor);
+                    x--;
+                    gotoxy(x1,1);
+                    printf("%c", bor);
+                    gotoxy(x1,5);
+                    printf("%c", bor);
+                    x1++;
+                    delay(30);
+                }	
+
+                    gotoxy(31,2);
+                    printf("%c", bor);
+                    delay(30);
+                    gotoxy(31,4);
+                    printf("%c", bor);
+                    delay(30);
+                    gotoxy(50,2);
+                    printf("%c", bor);
+                    delay(30);
+                    gotoxy(50,4);
+                    printf("%c", bor);
+                    delay(30);
+
+
+                x=31,x1=50;
+            for ( lop = 0; lop <30 ;lop++)
+                {
+                    gotoxy(x,3);
+                    printf("%c", bor);
+                    x--;
+                    gotoxy(x1,3);
+                    printf("%c", bor);
+                    x1++;
+                    delay(30);
+                }
+
+
+                y=4;
+
+            for ( lop = 0; lop <20 ;lop++)
+                {
+                    gotoxy(2,y);
+                    printf("%c", bor);
+                    gotoxy(79,y);
+                    printf("%c", bor);
+                    y++;
+                    delay(50);
+                }
+
+            x=78,x1=3;
+            for ( lop = 0; lop <76 ;lop++)
+                {
+                    gotoxy(x,19);
+                    printf("%c", bor);
+                    x--;
+                    gotoxy(x1,23);
+                    printf("%c", bor);
+                    x1++;
+                    delay(30);
+                }	
+
+
+            x=3,x1=78;
+            for ( lop = 0; lop <38 ;lop++)
+                {
+                    gotoxy(x,10);
+                    printf("%c", bor);
+                    gotoxy(x,14);
+                    printf("%c", bor);
+                    x++;
+                    gotoxy(x1,10);
+                    printf("%c", bor);
+                    gotoxy(x1,14);
+                    printf("%c", bor);
+                    x1--;
+                    delay(30);
+                }
+        }
+        void dioop()
+        {
+            clrscr();
+
+            x=2,y=1;
+            
+            for (lop = 0; lop < 24; lop++)
+            {
+                gotoxy(1,y);
+                printf("%c",bor);
+                gotoxy(80,y);
+                printf("%c",bor);
+                if (lop>2)
+                {
+                    gotoxy(50,y);
+                    printf("%c",bor);
+                }
+                gotoxy(60,y);
+                printf("%c",bor);
+                y++;
+            }
+
+            for (lop = 0; lop < 78; lop++)
+            {
+                gotoxy(x,1);
+                printf("%c",bor);
+                gotoxy(x,4);
+                printf("%c",bor);
+                gotoxy(x,24);
+                printf("%c",bor);
+                x++;
+            }
+        }
+        void dis3(){
+            clrscr();
+                y1=1,x1=1,x=80,y=24;
+                for (lop = 0; lop < 24; lop++)
+                {
+                    gotoxy(2,y1);
+                    printf("%c",bor);
+                    y1++;
+                    gotoxy(79,y);
+                    printf("%c",bor);
+                    y--;
+                }
+                for (lop = 0; lop < 80; lop++)
+                {
+                    gotoxy(x1,2);
+                    printf("%c",bor);
+                    x1++;
+                    gotoxy(x,23);
+                    printf("%c",bor);
+                    x--;
+                }	
+        }
+    </code></pre>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <!-- Prism Line Numbers Plugin JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <!-- Prism C Language Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-c.min.js"></script>
+
+</body>
+</html>

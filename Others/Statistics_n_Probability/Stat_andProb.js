@@ -15,13 +15,15 @@ function UngroupedCalAlgo() {
 
         ungroupedXValues[0]="";//initialize
     
-    for (let index = 0; index < userInput.length; index++) {
+    for (let index = 0; index < userInput.length; index++) 
+    {
         //decoding input
-        if(!(userInput[index] == "," || userInput[index] == " ")){
-            
-            ungroupedXValues[theCountOfXValues] += userInput[index];//adding 1 by 1 number unit
-
-        }else{
+        if(userInput[index] != ",")
+        {
+            if (userInput[index] == " ") continue;
+            ungroupedXValues[theCountOfXValues] += userInput[index];//adding 1 by 1 number unit            
+        }
+        else{
             theCountOfXValues++;//next  value container
             ungroupedXValues[theCountOfXValues] = "";//initialize for next value
         }
@@ -636,3 +638,10 @@ function getTwoValuesAndDoOperation(column1,row1,operation,column2,row2,theId1,t
     }
     return Operation(value1,operation,value2);
 }
+
+const refreshButton = document.getElementById('refreshButton');
+
+refreshButton.addEventListener('click', function () {
+    // Refresh the page
+    location.reload();
+});

@@ -1,0 +1,48 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    background-color: #d3d3d3;
+}
+header{
+    height: 90px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content{
+    
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    font-size: 1.1em;
+    padding: 0dvh 5dvh;
+}
+
+.content h4{
+    margin-left: 10dvh;
+}
+.listing_{
+    max-width: 680px;
+}
+
+.black_white_theme{
+    background-color: #292929;
+    color: #d3d3d3;
+}
+.readingFont{
+    font-family: "Roboto Slab", serif;
+}
+.generalFont{
+    font-family: Alatsi, sans-serif;
+}
+.generalShadow{
+    text-shadow: #3b2b2b 3px 3px;
+}
